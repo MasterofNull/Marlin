@@ -134,6 +134,10 @@ public:
     static void autofile_cancel() { autofile_index = 0; }
   #endif
 
+  #if ENABLED(MACHINE_COMMAND_MACROS)
+    static void runMacro(const char * const path);
+  #endif
+
   // Basic file ops
   static void openFileRead(const char * const path, const uint8_t subcall=0);
   static void openFileWrite(const char * const path);
@@ -142,6 +146,7 @@ public:
   static void removeFile(const char * const name);
 
   static char* longest_filename() { return longFilename[0] ? longFilename : filename; }
+
   #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
     static void printLongPath(char * const path);   // Used by M33
   #endif
